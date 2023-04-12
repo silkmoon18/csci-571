@@ -1,0 +1,30 @@
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html {
+  height: 100%;
+  font-size: calc(0.5em + 0.5vw);
+}
+
+body {
+  background: linear-gradient(to bottom, transparent, rgb(184, 193, 230)) fixed, url("assets/city.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.required-field::after {
+  content: " *";
+  color: red;
+}
+
+.word-wrap {
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

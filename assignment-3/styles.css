@@ -1,0 +1,109 @@
+body {
+    font-size: 100%;
+}
+
+div.frame {
+    width: 1000px;
+    margin: auto;
+}
+
+div.head-box {
+    width: 800px;
+    border-style: solid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 150px;
+    text-align: center;
+    padding: 20px;
+}
+
+p.head-title {
+    font-family: Georgia;
+    font-size: 3.75em;
+    margin: 0;
+}
+
+p.button {
+    font-family: Georgia;
+    font-size: 0.95em;
+    font-style: italic;
+    display: inline-block;
+    margin-inline: 5px;
+    margin: 5px;
+}
+
+.buttons {
+    font-family: Georgia;
+    font-size: 0.95em;
+    font-style: italic;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 225px;
+}
+
+a.button-style:link {
+    color: black;
+    text-decoration: none;
+}
+
+a.button-style:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a.button-style:hover {
+    color: black;
+    text-decoration: none;
+}
+
+a.button-style:active {
+    color: black;
+    text-decoration: none;
+}
+
+div.image-container {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+img.cropped {
+    width: 1000px;
+    height: 1000px;
+    object-fit: cover;
+}
+
+div.tail-box {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    text-align: center;
+}
+
+p.copy {
+    font-family: Georgia;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 0.5em;
+    transform: scaleY(1.2);
+
+}
+
+img.icon {
+    margin-top: 25px;
+    margin-bottom: 40px;
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    margin-inline: 15px;
+}
+
+.page2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 500px;
+}

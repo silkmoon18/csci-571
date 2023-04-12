@@ -1,0 +1,40 @@
+<div *ngIf="bookings.length > 0">
+  <p class="h2 text-center">List of your reservations</p>
+
+  <div class="container mt-5">
+    <table id="bookings" class="table bg-white text-center rounded-4 word-wrap">
+      <thead>
+      <tr>
+        <th class="col-1">#</th>
+        <th class="col-3">Business Name</th>
+        <th class="col-2">Date</th>
+        <th class="col-2">Time</th>
+        <th class="col-3">E-mail</th>
+        <th class="col-1"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td class="fw-bold">{{bookings.indexOf(booking) + 1}}</td>
+        <td>{{booking['name']}}</td>
+        <td>{{booking['date']}}</td>
+        <td>{{booking['time']}}</td>
+        <td>{{booking['email']}}</td>
+        <td>
+          <img src="assets/bin-icon.png" alt="" class="icon clickable"
+               (click)="bookingsService.deleteReservation(bookings.indexOf(booking))">
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="bookings.length === 0" class="row">
+  <div class="container">
+    <div class="bg-white rounded rounded-4 col-md-4 col-7 mx-auto align-items-center">
+      <div class="text-danger text-center h4">No reservations to show</div>
+    </div>
+  </div>
+</div>

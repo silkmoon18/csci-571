@@ -1,0 +1,60 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Yelp</string>
+
+    <!-- toolbar -->
+    <string name="text_toolbar_reservation">My Bookings</string>
+    <string name="text_toolbar_facebook">Facebook</string>
+    <string name="text_toolbar_twitter">Twitter</string>
+
+    <!-- search box -->
+    <string name="text_search_title">Business Search</string>
+    <string name="input_search_keyword">Keyword <font color='#FF0000'>*</font></string>
+    <string name="input_search_distance">Distance</string>
+    <string name="text_search_category">Category <font color='#FF0000'>*</font></string>
+    <string-array name="spinner_search_category">
+        <item>Default</item>
+        <item>Arts and Entertainment</item>
+        <item>Health and Medical</item>
+        <item>Hotels and Travel</item>
+        <item>Food</item>
+        <item>Professional Services</item>
+    </string-array>
+    <string name="input_search_location">Location <font color='#FF0000'>*</font></string>
+    <string name="checkbox_search_autoLocation">Auto-detect my location</string>
+    <string name="button_search_submit">Submit</string>
+    <string name="button_search_clear">Clear</string>
+    <string name="url_root">https://au22-csci571-assignment8.wn.r.appspot.com</string>
+
+    <!-- search result -->
+    <string name="text_result_title">Results</string>
+    <string name="text_result_noFound">No Results Found!</string>
+
+    <!-- detail -->
+    <string name="text_todo">to be filled</string>
+    <string name="text_info_address">Address</string>
+    <string name="text_info_price">Price Range</string>
+    <string name="text_info_phone">Phone Number</string>
+    <string name="text_info_status">Status</string>
+    <string name="text_info_category">Category</string>
+    <string name="text_info_url">Visit Yelp For More</string>
+    <string name="button_info_reserve">RESERVE NOW</string>
+    <string name="description_info_photo">Photo</string>
+
+    <!-- reservation -->
+    <string name="text_reservationForm_email">Email</string>
+    <string name="input_reservationForm_email">Email Id</string>
+    <string name="text_reservationForm_date">Date</string>
+    <string name="input_reservationForm_date">mm-dd-yyyy</string>
+    <string name="text_reservationForm_time">Start Time</string>
+    <string name="input_reservationForm_time">hh:mm</string>
+    <string name="button_reservationForm_submit">SUBMIT</string>
+    <string name="button_reservationForm_cancel" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="toast_reservationForm_validInput">Reservation Booked</string>
+    <string name="toast_reservationForm_emptyEmail">Please enter email</string>
+    <string name="toast_reservationForm_invalidEmail">InValid Email Address</string>
+    <string name="toast_reservationForm_emptyDate">Please choose a date</string>
+    <string name="toast_reservationForm_emptyTime">Please choose a time</string>
+    <string name="toast_reservationForm_invalidTime">Time should be between 10AM AND 5PM</string>
+    <string name="text_bookings_noFound">No Bookings found!</string>
+    <string name="text_bookings_removing">Removing Existing Reservation</string>
+</resources>

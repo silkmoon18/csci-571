@@ -1,0 +1,171 @@
+<div class="container mt-5 bg-white rounded rounded-4 p-0" *ngIf="!isHidden">
+
+  <!--return-->
+  <img src="assets/left-arrow.png" class="back-arrow mt-4 ms-3 img-fluid" (click)="back()" alt="">
+
+  <div class="row">
+
+    <!--name-->
+    <div class="text-center ">
+      <p class="h3 fw-bold">{{name}}</p>
+    </div>
+
+    <!--details-->
+    <div class="mt-3">
+      <mat-tab-group mat-align-tabs="center" backgroundColor="accent">
+        <mat-tab label="Business Details">
+          <div class="container mb-5">
+
+            <!--info-->
+            <div class="row word-wrap p-3 text-center">
+              <div class="col-md-6" *ngFor="let col of columns" [innerHTML]="col.outerHTML"></div>
+            </div>
+
+            <!--reserve-->
+            <div class="text-center mt-1">
+              <button class="btn btn-lg btn-danger" data-bs-toggle="modal" data-bs-target="#reservationForm"
+                      *ngIf="bookingService.isReserved(name) === -1">
+                Reserve Now
+              </button>
+              <button class="btn btn-lg btn-primary" (click)="cancelReservation()"
+                      *ngIf="bookingService.isReserved(name) !== -1">
+                Cancel reservation
+              </button>
+            </div>
+
+            <!--share-->
+            <div class="text-center mt-3">
+              <p class="d-inline">Share on: </p>
+              <a href="https://twitter.com/intent/tweet?text=Check {{name}} on Yelp. %0A{{url}}" target="_blank">
+                <img class="twitter ms-3 mt-auto" src="assets/twitter-logo.png" alt="">
+              </a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{url}}" target="_blank">
+                <img class="facebook" src="assets/facebook-logo.png" alt="">
+              </a>
+            </div>
+
+            <!--carousel-->
+            <div class="container mb-4">
+              <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item" *ngFor="let photo of photos" [class.active]="photos.indexOf(photo) === 0">
+                    <img src="{{photo}}" class="d-block m-auto photo img-fluid" alt="">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </mat-tab>
+        <mat-tab label="Map location">
+          <div class="container-fluid my-3 mx-0 px-0">
+            <google-map [options]="mapOptions"
+                        width="100%">
+              <map-marker [position]="marker.position"></map-marker>
+            </google-map>
+          </div>
+        </mat-tab>
+        <mat-tab label="Reviews">
+
+          <table class="table table-striped bg-white rounded rounded-4 word-wrap m-0">
+            <thead>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let review of reviews">
+              <td>
+                <div class="h4">{{review['name']}}</div>
+                <p>Rating: {{review['rating']}}/5</p>
+                <p class="my-md-3 my-4">{{review['text']}}</p>
+                <p class="mb-md-3 mb-4">{{review['time_created'].split(' ')[0]}}</p>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="reservationForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="reservationFormLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title fw-bold" id="reservationFormLabel">Reservation Form</h3>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="reservationForm">
+          <div class="text-center pt-md-1 pt-1">
+            <p class="h4 fw-bold">{{name}}</p>
+          </div>
+
+          <div>
+            <label for="email" class="h6">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email" required
+                   [class.is-invalid]="hasError('email')">
+            <div class="invalid-feedback">
+              <div *ngIf="emailControl.value == ''">
+                {{emailError[0]}}
+              </div>
+              <div *ngIf="emailControl.errors?.['pattern']">
+                {{emailError[1]}}
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="date" class="h6">Date</label>
+            <input type="date" class="form-control" id="date" formControlName="date" required
+                   value="{{getToday()}}"
+                   min="{{getToday()}}"
+                   [class.is-invalid]="hasError('date')">
+            <div class="invalid-feedback">
+              Date is required
+            </div>
+          </div>
+          <div>
+            <label for="hour">Time</label>
+            <div class="row align-items-center">
+              <div class="col-3">
+                <select class="form-control col-3" id="hour" formControlName="hour" required
+                        [class.is-invalid]="hasError('hour')">
+                  <option *ngFor="let hour of hours" [value]="hour">{{hour}}</option>
+                </select>
+              </div>
+              <div class="col-auto text-end pe-0">
+                <span class="form-text">:</span>
+              </div>
+              <div class="col-3">
+                <select class="form-control" id="minute" formControlName="minute" required
+                        [class.is-invalid]="hasError('minute')">
+                  <option *ngFor="let minute of minutes" [value]="minute">{{minute}}</option>
+                </select>
+              </div>
+              <div class="col-1 ps-0">
+                <img src="assets/clock-icon.png" alt="">
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-3">
+            <button type="button" class="btn btn-danger" (click)="onSubmit()">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal" #closeModal>Close</button>
+      </div>
+    </div>
+  </div>
+</div>

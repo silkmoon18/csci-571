@@ -1,0 +1,23 @@
+
+img.back-arrow {
+  cursor: pointer;
+  width: 17px;
+}
+
+img.twitter {
+  width: 30px;
+}
+
+img.facebook {
+  width: 45px;
+}
+
+img.photo {
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+}
+
+.mat-tab-group {
+  min-height: 300px;
+}

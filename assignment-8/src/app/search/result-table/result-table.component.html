@@ -1,0 +1,29 @@
+<div class="container-fluid mt-5 px-md-5 h6" *ngIf="!isHidden">
+  <div class="row" *ngIf="!isDataEmpty()">
+    <table id="resultTable" class="table table-striped bg-white text-center rounded-4 word-wrap">
+      <thead>
+      <tr>
+        <th class="col-1">#</th>
+        <th class="col-3">Image</th>
+        <th class="col-3">Business Name</th>
+        <th class="col-2">Rating</th>
+        <th class="col-2">Distance (miles)</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let data of tableData" class="clickable" (click)="displayBusinessDetail(data[1]['id'])">
+        <td>{{data[0]}}</td>
+        <td><img src="{{data[1]['image']}}" class="img-fluid result" alt=""></td>
+        <td>{{data[1]['name']}}</td>
+        <td>{{data[1]['distance']}}</td>
+        <td>{{data[1]['rating']}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row" *ngIf="isDataEmpty()">
+    <div class="bg-white rounded rounded-4 text-danger m-auto w-25 fw-bold text-center mb-5 h4">No results available</div>
+  </div>
+</div>

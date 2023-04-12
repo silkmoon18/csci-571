@@ -1,0 +1,18 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_facebook"
+        android:icon="@drawable/facebook"
+        android:title="@string/text_toolbar_facebook"
+        android:theme="@style/Theme.Csci571assignment9"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_twitter"
+        android:icon="@drawable/twitter"
+        android:title="@string/text_toolbar_twitter"
+        android:theme="@style/Theme.Csci571assignment9"
+        app:showAsAction="ifRoom" />
+
+</menu>
